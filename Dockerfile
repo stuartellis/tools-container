@@ -1,4 +1,4 @@
-FROM centos7.5.1804 
+FROM centos:7.6.1810 
 
 ## Image metadata ##
 
