@@ -13,7 +13,7 @@ RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.n
 RUN yum -y update
 
 # Add extra RPM packages
-RUN yum install -y python2-pip-8.1.2-6.el7 neovim-0.3.0-2.el7
+RUN yum install -y git-1.8.3.1-20.el7 python2-pip-8.1.2-6.el7 neovim-0.3.0-2.el7
 
 # Add other software
 RUN pip install 'awscli==1.16.60'
