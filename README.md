@@ -13,5 +13,4 @@ The host system must have:
 
 ## AWS CLI
 
-The _.aws_ directory for the user is shared from the host to the containerwith a bind mount, so that the CLI in the VM automatically uses these settings.
-
+The _.aws_ directory for the user is shared from the host to the container with a bind mount, so that the CLI in the VM automatically uses these settings.
