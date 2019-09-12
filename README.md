@@ -2,24 +2,35 @@
 
 [![Stability: Experimental](https://masterminds.github.io/stability/experimental.svg)](https://masterminds.github.io/stability/experimental.html)
 
-Docker project to set up a container with tools for DevOps.
+This provides a Linux shell with tools for DevOps, using Docker.
 
-## Contents
+The _.aws_ directory for your user account is shared from the host to the container with a bind mount, so that the AWS CLI in the container automatically uses these settings.
 
-This container provides:
-
-- CentOS 7.6
-- Python 3 from [Software Collections](https://www.softwarecollections.org/en/)
-- The AWS CLI
-- The [requests](https://2.python-requests.org/en/master/) Web client library for Python
+Similarly, the _.ssh_ directory for your user account is shared from the host to the container. 
 
 ## Prerequisites
 
 The host system must have:
 
 - Docker
-- A _.aws_ directory for the user
+- A _.aws_ directory for your user account
+- A _.ssh_ directory for your user account
 
-## AWS CLI
+## Usage
 
-The _.aws_ directory for the user is shared from the host to the container with a bind mount, so that the CLI in the VM automatically uses these settings.
+First, build the Docker image. Run this command in a Bash shell:
+
+    ./do.sh setup
+
+To run a container and get the Linix command prompt:
+
+    ./do.sh shell
+
+## Contents
+
+This container image provides:
+
+- CentOS 7.6
+- Python 3 from [Software Collections](https://www.softwarecollections.org/en/)
+- The AWS CLI
+- The [requests](https://2.python-requests.org/en/master/) Web client library for Python
