@@ -2,18 +2,24 @@ FROM centos:7.6.1810
 
 ## Image metadata ##
 
-LABEL maintainer="stuart@stuartellis.name" \
-    version="0.3.0" \
-    description="DevOps Tools"
+LABEL org.opencontainers.image.version="0.4.0"
+LABEL org.opencontainers.image.authors="Stuart Ellis <stuart@stuartellis.name>"
+LABEL org.opencontainers.image.licenses="MIT"
+LABEL org.opencontainers.image.title="DevOps Tools Container" \ 
+  org.opencontainers.image.description="DevOps utility container"
 
-# Enable EPEL
-RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm   
+# Enable access to Software Collections 
+RUN yum -y install centos-release-scl   
 
 # Update system
-RUN yum -y update
+RUN yum -y update && \ 
+    yum clean all
 
-# Add extra RPM packages
-RUN yum install -y git-1.8.3.1-20.el7 python2-pip-8.1.2-6.el7 neovim-0.3.0-2.el7
+# Install and enable Git 2.18 and Python 3.6
+RUN yum -y install rh-git218 rh-python36
 
-# Add other software
-RUN pip install 'awscli==1.16.60'
+# Add latest versions of libraries to Python 3 installation
+RUN scl enable rh-git218 rh-python36 "pip3 install 'awscli' 'boto3' 'requests'"
+
+# Enable Software Collections products
+RUN echo "source scl_source enable rh-git218 rh-python36" > /etc/profile.d/scl_enable.sh 
