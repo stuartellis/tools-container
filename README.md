@@ -4,6 +4,15 @@
 
 Docker project to set up a container with tools for DevOps.
 
+## Contents
+
+This container provides:
+
+- CentOS 7.6
+- Python 3 from [Software Collections](https://www.softwarecollections.org/en/)
+- The AWS CLI
+- The [requests](https://2.python-requests.org/en/master/) Web client library for Python
+
 ## Prerequisites
 
 The host system must have:
