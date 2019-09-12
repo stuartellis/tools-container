@@ -2,7 +2,7 @@ FROM centos:7.6.1810
 
 ## Image metadata ##
 
-LABEL org.opencontainers.image.version="0.4.0"
+LABEL org.opencontainers.image.version="0.5.0"
 LABEL org.opencontainers.image.authors="Stuart Ellis <stuart@stuartellis.name>"
 LABEL org.opencontainers.image.licenses="MIT"
 LABEL org.opencontainers.image.title="DevOps Tools Container" \ 
