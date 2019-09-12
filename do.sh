@@ -8,7 +8,7 @@ set -eu
 CONTAINER_DIR="${PWD}"
 CONTAINER_NAME="$(basename "${CONTAINER_DIR}")"
 
-PROJECTS_DIR="${HOME}/Projects"
+PROJECTS_DIR="${HOME}/code"
 AWS_CREDENTIALS_DIR="${HOME}/.aws"
 GIT_CONFIG_FILE="${HOME}/.gitconfig"
 SSH_CREDENTIALS_DIR="${HOME}/.ssh"
