@@ -22,7 +22,7 @@ First, build the Docker image. Run this command in a Bash shell:
 
     ./do.sh setup
 
-To run a container and get the Linix command prompt:
+To run a container and get the Linux command prompt:
 
     ./do.sh shell
 
