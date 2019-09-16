@@ -2,11 +2,14 @@ FROM centos:7.6.1810
 
 ## Image metadata ##
 
-LABEL org.opencontainers.image.version="0.5.0"
+LABEL org.opencontainers.image.version="0.6.0"
 LABEL org.opencontainers.image.authors="Stuart Ellis <stuart@stuartellis.name>"
 LABEL org.opencontainers.image.licenses="MIT"
-LABEL org.opencontainers.image.title="DevOps Tools Container" \ 
-  org.opencontainers.image.description="DevOps utility container"
+LABEL org.opencontainers.image.title="Tools Container" \ 
+  org.opencontainers.image.description="Linux shell and tools"
+
+# Install additional CentOS packages
+RUN yum install -y nano vim-enhanced
 
 # Enable access to Software Collections 
 RUN yum -y install centos-release-scl   
@@ -15,11 +18,20 @@ RUN yum -y install centos-release-scl
 RUN yum -y update && \ 
     yum clean all
 
-# Install and enable Git 2.18 and Python 3.6
+# Install Git and Python from Software Collections
 RUN yum -y install rh-git218 rh-python36
 
-# Add latest versions of libraries to Python 3 installation
+# Add latest versions of Python packages to Python 3 installation
 RUN scl enable rh-git218 rh-python36 "pip3 install 'awscli' 'boto3' 'requests'"
 
-# Enable Software Collections products
+# Enable Software Collections products in the shell
 RUN echo "source scl_source enable rh-git218 rh-python36" > /etc/profile.d/scl_enable.sh 
+
+# Enable SSH agent in the shell
+RUN echo "eval $(ssh-agent)" > /etc/profile.d/ssh_agent.sh 
+
+# Create mount point
+RUN mkdir /mnt/share
+
+# Add Vim configuration 
+COPY .vimrc /root/.vimrc
