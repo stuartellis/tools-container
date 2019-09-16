@@ -8,7 +8,7 @@ The _share_ directory that is created will be available inside the Linux shell a
 
 The _.aws_ directory in your user account is shared, so that the AWS CLI in the Linux shell automatically uses your settings.
 
-Similarly, the _.ssh_ directory in your user account is shared. The Linux shell runs an SSH agent, but it does _not_ share any SSH agent that you are running on the host system.
+Similarly, the _.ssh_ directory in your user account is shared with the container.  
 
 > For safety, your _.aws_ and _.ssh_ directories are read-only in the Linux shell. 
 
@@ -51,6 +51,10 @@ This builds a Docker image, and creates the _share_ directory.
 To get the Linux command prompt:
 
     ./do.sh shell
+
+To run an SSH agent in this shell, enter this command:
+
+    eval $(ssh-agent)
 
 ### Manually 
 

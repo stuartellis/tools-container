@@ -27,9 +27,6 @@ RUN scl enable rh-git218 rh-python36 "pip3 install 'awscli' 'boto3' 'requests'"
 # Enable Software Collections products in the shell
 RUN echo "source scl_source enable rh-git218 rh-python36" > /etc/profile.d/scl_enable.sh 
 
-# Enable SSH agent in the shell
-RUN echo "eval $(ssh-agent)" > /etc/profile.d/ssh_agent.sh 
-
 # Create mount point
 RUN mkdir /mnt/share
 
